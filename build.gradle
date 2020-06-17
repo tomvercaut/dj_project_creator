@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group 'org.tv'
+version '0.1.0'
+
+sourceCompatibility = 1.12
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+ext {
+    lombokVersion = "1.18.12"
+    cliVersion = "1.4"
+    log4jVersion = "2.11.1"
+    junitVersion = "5.6.0"
+}
+
+dependencies {
+    compile "org.apache.logging.log4j:log4j-api:$log4jVersion"
+    compile "org.apache.logging.log4j:log4j-core:$log4jVersion"
+    compile "commons-cli:commons-cli:$cliVersion"
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+}
+
+test {
+    useJUnitPlatform()
+}
